@@ -12,7 +12,7 @@
 <body>
 
   <div class="app-container">
-    <!-- Header 區 -->
+    <!-- 日系 Header 區 -->
     <header class="main-header">
       <div class="brand">
         <span class="badge">TRAIL & SHOT</span>
@@ -25,7 +25,7 @@
       </div>
     </header>
 
-    <!-- 核心時刻表看板 -->
+    <!-- 核心翻轉式時刻表看板 (Flip Board) -->
     <main class="drawing-stage">
       <div class="flip-board-container">
         <div class="board-header">
@@ -56,23 +56,6 @@
           <span class="btn-text">按下快門抽選</span>
         </button>
       </div>
-
-      <!-- 下方區塊：起始站選擇與路線預估資訊區 -->
-      <section class="route-planner-card">
-        <div class="planner-header">
-          <h3>🚉 出發行程規劃</h3>
-          <div class="start-station-select">
-            <label for="select-start-station">設定你的起始站：</label>
-            <select id="select-start-station">
-              <!-- JS 動態渲染 241 站 -->
-            </select>
-          </div>
-        </div>
-
-        <div class="route-estimates-container" id="route-estimates">
-          <p class="placeholder-text">按下快門抽選後，此處將自動算得出發規劃與停靠站數！</p>
-        </div>
-      </section>
     </main>
   </div>
 
@@ -80,13 +63,13 @@
   <div id="result-modal" class="modal-overlay hidden">
     <div class="polaroid-card">
       <div class="station-header-bar">
-        <span class="photo-tag" id="modal-tag">路線 | 等級</span>
+        <span class="photo-tag" id="modal-tag">路線 | 代碼</span>
         <span class="tap-hint">💡 點擊任意處返回主畫面</span>
       </div>
 
       <div class="polaroid-caption">
         <h2 id="modal-station-title">車站名稱</h2>
-        <p class="location-text" id="modal-location">📍 所在縣市</p>
+        <p class="location-text" id="modal-location">📍 路線與代碼</p>
         
         <div class="info-section">
           <h3>📷 周邊拍攝地點</h3>
