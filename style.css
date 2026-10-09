@@ -182,7 +182,7 @@ body {
   transform: translateY(2px);
 }
 
-/* 拍立得 Modal 照片卡片 */
+/* 無圖片版資訊卡片 */
 .modal-overlay {
   position: fixed;
   top: 0; left: 0; right: 0; bottom: 0;
@@ -192,66 +192,67 @@ body {
   align-items: center;
   padding: 20px;
   z-index: 100;
+  cursor: pointer; /* 提示點擊可關閉 */
 }
 
 .hidden { display: none; }
 
 .polaroid-card {
   background: var(--card-bg);
-  padding: 16px 16px 24px 16px;
-  border-radius: 12px;
+  padding: 20px 24px 28px 24px;
+  border-radius: 16px;
   width: 100%;
-  max-width: 380px;
+  max-width: 420px;
   box-shadow: 0 20px 30px rgba(0,0,0,0.3);
   position: relative;
-  animation: popUp 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  animation: popUp 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
 @keyframes popUp {
-  0% { transform: scale(0.7); opacity: 0; }
+  0% { transform: scale(0.85); opacity: 0; }
   100% { transform: scale(1); opacity: 1; }
 }
 
-.btn-close {
-  position: absolute;
-  top: 10px; right: 12px;
-  background: none; border: none;
-  font-size: 1.5rem; cursor: pointer; color: #9CA3AF;
-}
-
-.polaroid-photo {
-  position: relative;
-  width: 100%;
-  height: 220px;
-  background: #E5E7EB;
-  border-radius: 8px;
-  overflow: hidden;
-}
-
-.polaroid-photo img {
-  width: 100%; height: 100%;
-  object-fit: cover;
+.station-header-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+  padding-bottom: 8px;
+  border-bottom: 1px dashed #E5E7EB;
 }
 
 .photo-tag {
-  position: absolute;
-  bottom: 8px; left: 8px;
-  background: rgba(0,0,0,0.6);
-  color: white; font-size: 0.75rem;
-  padding: 4px 8px; border-radius: 4px;
+  background: var(--accent-color);
+  color: white;
+  font-size: 0.8rem;
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-weight: bold;
+}
+
+.tap-hint {
+  font-size: 0.75rem;
+  color: #9CA3AF;
 }
 
 .polaroid-caption {
-  margin-top: 16px;
+  margin-top: 8px;
 }
 
-.polaroid-caption h2 { font-size: 1.4rem; color: var(--text-primary); }
-.location-text { font-size: 0.85rem; color: #6B7280; margin-bottom: 12px; }
+.polaroid-caption h2 { font-size: 1.6rem; color: var(--text-primary); }
+.location-text { font-size: 0.9rem; color: #6B7280; margin-bottom: 16px; }
 
-.info-section { margin-top: 10px; }
-.info-section h3 { font-size: 0.85rem; color: var(--accent-color); margin-bottom: 4px; }
-.info-section ul { list-style: none; font-size: 0.85rem; padding-left: 4px; }
-.info-section li { margin-bottom: 4px; color: #374151; }
+.info-section { margin-top: 14px; }
+.info-section h3 { font-size: 0.95rem; color: var(--accent-color); margin-bottom: 6px; }
+.info-section ul { list-style: none; font-size: 0.9rem; padding-left: 0; }
+.info-section li { 
+  margin-bottom: 8px; 
+  color: #374151; 
+  background: #F3F4F6;
+  padding: 8px 12px;
+  border-radius: 8px;
+}
 
 /* 歷史紀錄面板 */
 .history-panel {
@@ -260,12 +261,18 @@ body {
   max-height: 80vh;
   border-radius: 16px; padding: 20px;
   display: flex; flex-direction: column; gap: 12px;
+  cursor: default;
 }
 
 .panel-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+.btn-close {
+  background: none; border: none;
+  font-size: 1.5rem; cursor: pointer; color: #9CA3AF;
 }
 
 .history-list { overflow-y: auto; list-style: none; display: flex; flex-direction: column; gap: 8px; }

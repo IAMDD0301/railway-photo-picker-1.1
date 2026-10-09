@@ -71,15 +71,12 @@
     </main>
   </div>
 
-  <!-- 彈出式車站寫真卡片 (Result Modal) -->
+  <!-- 彈出式車站資訊卡片 (無圖片版) -->
   <div id="result-modal" class="modal-overlay hidden">
     <div class="polaroid-card">
-      <button id="btn-close-modal" class="btn-close">×</button>
-      
-      <!-- 照片區 -->
-      <div class="polaroid-photo">
-        <img id="modal-photo" src="" alt="車站風景">
+      <div class="station-header-bar">
         <span class="photo-tag" id="modal-tag">宜蘭線 | 招呼站</span>
+        <span class="tap-hint">💡 點擊任意處返回主畫面</span>
       </div>
 
       <!-- 文字與推薦區 -->
@@ -102,7 +99,7 @@
 
   <!-- 歷史紀錄側邊欄 (History Modal) -->
   <div id="history-modal" class="modal-overlay hidden">
-    <div class="history-panel">
+    <div class="history-panel" onclick="event.stopPropagation()">
       <div class="panel-header">
         <h2>📜 旅途日誌 (已造訪車站)</h2>
         <button id="btn-close-history" class="btn-close">×</button>

@@ -1,4 +1,4 @@
-// 預設備用站點資料 (確保 JSON 讀取失敗時網頁也能正常運作)
+// 預設備用站點資料
 const fallbackStations = [
   {
     "station_code": "2160",
@@ -117,7 +117,7 @@ elBtnDraw.addEventListener('click', () => {
     }
     updateStats();
 
-    // 彈出寫真卡片
+    // 彈出資訊卡片
     setTimeout(() => {
       showResultModal(finalStation);
       elBtnDraw.disabled = false;
@@ -131,8 +131,6 @@ function showResultModal(station) {
   document.getElementById('modal-station-title').textContent = station.station_name + " 火車站";
   document.getElementById('modal-location').textContent = `📍 ${station.city}${station.district}`;
   document.getElementById('modal-tag').textContent = `${station.line_name} | ${station.station_grade}`;
-  
-  document.getElementById('modal-photo').src = `https://picsum.photos/400/300?random=${station.station_code}`;
 
   const spotList = document.getElementById('modal-photo-spots');
   spotList.innerHTML = station.photo_spots.map(spot => 
@@ -147,8 +145,11 @@ function showResultModal(station) {
   modalResult.classList.remove('hidden');
 }
 
-// 關閉 Modal 事件
-document.getElementById('btn-close-modal').onclick = () => modalResult.classList.add('hidden');
+// 點擊任意處關閉結果 Modal
+modalResult.onclick = () => modalResult.classList.add('hidden');
+
+// 歷史紀錄相關事件
+modalHistory.onclick = () => modalHistory.classList.add('hidden');
 document.getElementById('btn-close-history').onclick = () => modalHistory.classList.add('hidden');
 
 // 開啟歷史紀錄
