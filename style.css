@@ -71,7 +71,6 @@ body {
   width: 100%;
 }
 
-/* 篩選器樣式 */
 .filter-bar {
   background: white;
   padding: 12px 18px;
@@ -94,6 +93,7 @@ body {
   cursor: pointer;
 }
 
+/* 可點擊開啟詳情的看板 */
 .flip-board-container {
   background: var(--board-bg);
   width: 100%;
@@ -101,9 +101,22 @@ body {
   border-radius: 16px;
   box-shadow: 0 10px 25px rgba(0,0,0,0.2);
   border: 4px solid #374151;
+  cursor: pointer;
+  transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.flip-board-container:hover {
+  transform: translateY(-2px);
+  border-color: var(--accent-color);
 }
 
 .board-header { display: flex; justify-content: space-between; color: #9CA3AF; font-size: 0.75rem; margin-bottom: 12px; }
+
+.clickable-title {
+  color: #F3F4F6;
+  font-weight: bold;
+}
+
 .flip-board { display: flex; gap: 10px; justify-content: space-around; }
 .flip-column { display: flex; flex-direction: column; align-items: center; gap: 6px; }
 .column-label { color: #9CA3AF; font-size: 0.7rem; }
@@ -173,7 +186,7 @@ body {
 .btn-go-official:hover { background: #0369A1; transform: translateY(-2px); }
 .sub-note { font-size: 0.8rem; color: #64748B; }
 
-/* Modal 彈窗 */
+/* Modal 彈窗樣式與導航連結 */
 .modal-overlay {
   position: fixed;
   top: 0; left: 0; right: 0; bottom: 0;
@@ -205,7 +218,36 @@ body {
 .info-section { margin-top: 14px; }
 .info-section h3 { font-size: 0.95rem; color: var(--accent-color); margin-bottom: 6px; }
 .info-section ul { list-style: none; }
-.info-section li { margin-bottom: 8px; color: #374151; background: #F3F4F6; padding: 8px 12px; border-radius: 8px; font-size: 0.9rem; }
+
+.item-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+  background: #F3F4F6;
+  padding: 8px 12px;
+  border-radius: 8px;
+}
+
+.item-info { font-size: 0.9rem; color: #374151; }
+.item-info small { color: #6B7280; display: block; margin-top: 2px; }
+
+.btn-nav-link {
+  background: #0284C7;
+  color: white;
+  text-decoration: none;
+  font-size: 0.75rem;
+  padding: 5px 9px;
+  border-radius: 6px;
+  white-space: nowrap;
+  margin-left: 10px;
+  font-weight: bold;
+  transition: background 0.2s;
+}
+
+.btn-nav-link:hover {
+  background: #0369A1;
+}
 
 .history-panel { background: white; width: 100%; max-width: 450px; max-height: 80vh; border-radius: 16px; padding: 20px; display: flex; flex-direction: column; gap: 12px; cursor: default; }
 .panel-header { display: flex; justify-content: space-between; align-items: center; }

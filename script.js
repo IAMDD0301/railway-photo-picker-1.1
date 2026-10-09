@@ -1,14 +1,23 @@
 let allStations = [];
 let visitedCodes = JSON.parse(localStorage.getItem('railway_visited')) || [];
+let currentStation = null; // 紀錄目前顯示的車站
 
 const elLine = document.getElementById('flip-line');
 const elCode = document.getElementById('flip-code');
 const elName = document.getElementById('flip-name');
 const elBtnDraw = document.getElementById('btn-draw');
 const selectFilter = document.getElementById('filter-region');
+const boardContainer = document.getElementById('board-container');
 
 const modalResult = document.getElementById('result-modal');
 const modalHistory = document.getElementById('history-modal');
+
+// 您指定的 30 個主要大站清單
+const majorStationList = [
+  "臺北", "桃園", "臺南", "板橋", "臺中", "中壢", "新竹", "松山", "南港", "高雄",
+  "樹林", "彰化", "新左營", "汐止", "屏東", "嘉義", "汐科", "內壢", "花蓮", "鶯歌",
+  "基隆", "萬華", "羅東", "員林", "斗六", "竹北", "瑞芳", "豐原", "苗栗", "大甲"
+];
 
 // 載入 stations.json
 fetch('./stations.json')
@@ -37,7 +46,7 @@ function getFilteredStations() {
     if (filterVal === 'SOUTH') return ['西部幹線', '沙崙線'].includes(s.line_name) && codeNum >= 3360;
     if (filterVal === 'EAST') return ['東部幹線', '屏東-南迴線'].includes(s.line_name);
     if (filterVal === 'SECRET') return ['平溪線', '內灣線', '集集線', '深澳線', '海線'].includes(s.line_name);
-    if (filterVal === 'MAJOR') return ['特等站', '一等站', '二等站'].includes(s.station_grade);
+    if (filterVal === 'MAJOR') return majorStationList.includes(s.station_name);
     return true;
   });
 }
@@ -67,6 +76,7 @@ elBtnDraw.addEventListener('click', () => {
   setTimeout(() => {
     clearInterval(timer);
     const finalStation = available[Math.floor(Math.random() * available.length)];
+    currentStation = finalStation;
     
     elLine.classList.remove('flipping');
     elCode.classList.remove('flipping');
@@ -90,20 +100,37 @@ elBtnDraw.addEventListener('click', () => {
   }, 1500);
 });
 
+// 點擊「▲ 下一站目的地 ▲」看板重新打開詳細資訊
+boardContainer.addEventListener('click', () => {
+  if (currentStation) {
+    showResultModal(currentStation);
+  }
+});
+
 function showResultModal(station) {
   document.getElementById('modal-station-title').textContent = station.station_name + " 火車站";
   document.getElementById('modal-location').textContent = `📍 路線：${station.line_name} (代碼: ${station.station_code})`;
   document.getElementById('modal-tag').textContent = `${station.line_name}`;
 
-  const spotList = document.getElementById('modal-photo-spots');
-  spotList.innerHTML = station.photo_spots.map(spot => 
-    `<li><strong>${spot.name}</strong> (${spot.distance_text})<br><small style="color:#6B7280">${spot.description}</small></li>`
-  ).join('');
+  // 起點：該火車站；終點：景點或美食名稱
+  const renderItemsWithNav = (items) => items.map(spot => {
+    const origin = encodeURIComponent(`${station.station_name}火車站`);
+    const destination = encodeURIComponent(spot.name);
+    const googleNavUrl = `https://www.google.com/maps/dir/?api=1&origin=${origin}&destination=${destination}&travelmode=walking`;
 
-  const foodList = document.getElementById('modal-food-spots');
-  foodList.innerHTML = station.food_recommendations.map(food => 
-    `<li><strong>${food.name}</strong> (${food.distance_text})<br><small style="color:#6B7280">${food.description}</small></li>`
-  ).join('');
+    return `
+      <li class="item-row">
+        <div class="item-info">
+          <strong>${spot.name}</strong> (${spot.distance_text})<br>
+          <small>${spot.description}</small>
+        </div>
+        <a href="${googleNavUrl}" target="_blank" rel="noopener noreferrer" class="btn-nav-link" onclick="event.stopPropagation()">📍 路線導航</a>
+      </li>
+    `;
+  }).join('');
+
+  document.getElementById('modal-photo-spots').innerHTML = renderItemsWithNav(station.photo_spots);
+  document.getElementById('modal-food-spots').innerHTML = renderItemsWithNav(station.food_recommendations);
 
   modalResult.classList.remove('hidden');
 }

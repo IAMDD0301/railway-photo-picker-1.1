@@ -42,9 +42,10 @@
         </select>
       </div>
 
-      <div class="flip-board-container">
+      <!-- 可點擊重新查看詳細資訊的時刻表看板 -->
+      <div class="flip-board-container" id="board-container" title="點擊查看詳細資訊">
         <div class="board-header">
-          <span class="board-title">▲ 下一站目的地 ▲</span>
+          <span class="board-title clickable-title" id="btn-reopen-modal">▲ 下一站目的地 ▲ (點擊查看詳情)</span>
           <span class="status-indicator">STANDBY</span>
         </div>
         
@@ -99,7 +100,7 @@
         </div>
 
         <div class="info-section">
-          <h3>🍜 在地簡易美食</h3>
+          <h3>🍜 在地美食</h3>
           <ul id="modal-food-spots"></ul>
         </div>
       </div>
