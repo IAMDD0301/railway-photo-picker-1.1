@@ -7,6 +7,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@400;700&display=swap" rel="stylesheet">
+  <!-- 導入 html2canvas 用於卡片圖片生成下載 -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
   <link rel="stylesheet" href="./style.css">
 </head>
 <body>
@@ -19,9 +21,14 @@
         <h1>旅拍駅 <span>車站抽選系統</span></h1>
       </div>
       <div class="stats-bar">
-        <div class="stat-item">剩餘站點：<strong id="remaining-count">--</strong> / <span id="total-count">--</span></div>
-        <div class="stat-item">已造訪：<strong id="visited-count">0</strong></div>
-        <button id="btn-history" class="btn-icon">📜 旅途日誌</button>
+        <div class="header-controls">
+          <button id="btn-sound-toggle" class="btn-icon">🔊 音效: 開</button>
+          <button id="btn-history" class="btn-icon">📜 旅途日誌</button>
+        </div>
+        <div class="stat-items-group">
+          <span>剩餘站點：<strong id="remaining-count">--</strong> / <span id="total-count">--</span></span>
+          <span>已造訪：<strong id="visited-count">0</strong></span>
+        </div>
       </div>
     </header>
 
@@ -45,7 +52,7 @@
       <div class="flip-board-container">
         <div class="board-header">
           <span class="board-title">▲ 下一站目的地 ▲</span>
-          <span class="status-indicator">STANDBY</span>
+          <span class="status-indicator" id="board-status">STANDBY</span>
         </div>
         
         <div class="flip-board">
@@ -81,39 +88,58 @@
     </main>
   </div>
 
-  <!-- 彈出式車站資訊卡片 (點擊任意處關閉) -->
+  <!-- 彈出式車站資訊卡片 -->
   <div id="result-modal" class="modal-overlay hidden">
-    <div class="polaroid-card">
-      <div class="station-header-bar">
-        <span class="photo-tag" id="modal-tag">路線 | 代碼</span>
-        <span class="tap-hint">💡 點擊任意處返回主畫面</span>
-      </div>
-
-      <div class="polaroid-caption">
-        <h2 id="modal-station-title">車站名稱</h2>
-        <p class="location-text" id="modal-location">📍 路線與代碼</p>
-        
-        <div class="info-section">
-          <h3>📷 周邊拍攝地點</h3>
-          <ul id="modal-photo-spots"></ul>
+    <div class="polaroid-card-wrapper">
+      <div class="polaroid-card" id="capture-card">
+        <div class="station-header-bar">
+          <span class="photo-tag" id="modal-tag">路線 | 代碼</span>
+          <span class="tap-hint">💡 點擊背景空白處返回</span>
         </div>
 
-        <div class="info-section">
-          <h3>🍜 在地簡易美食</h3>
-          <ul id="modal-food-spots"></ul>
+        <div class="polaroid-caption">
+          <h2 id="modal-station-title">車站名稱</h2>
+          <p class="location-text" id="modal-location">📍 路線與代碼</p>
+          
+          <div class="info-section">
+            <h3>📷 周邊拍攝地點</h3>
+            <ul id="modal-photo-spots"></ul>
+          </div>
+
+          <div class="info-section">
+            <h3>🍜 在地簡易美食</h3>
+            <ul id="modal-food-spots"></ul>
+          </div>
+        </div>
+
+        <div class="card-footer-watermark">
+          <span>TRAIL & SHOT 旅拍駅</span>
         </div>
       </div>
+
+      <button id="btn-save-card" class="btn-save-image">📸 下載旅拍卡片 (IG分享)</button>
     </div>
   </div>
 
-  <!-- 歷史紀錄側邊欄 -->
+  <!-- 歷史紀錄側邊欄與成就徽章 -->
   <div id="history-modal" class="modal-overlay hidden">
     <div class="history-panel" onclick="event.stopPropagation()">
       <div class="panel-header">
-        <h2>📜 旅途日誌 (已造訪車站)</h2>
+        <h2>📜 旅途日誌 & 成就勳章</h2>
         <button id="btn-close-history" class="btn-close">×</button>
       </div>
-      <ul id="history-list" class="history-list"></ul>
+
+      <!-- 成就勳章展示區 -->
+      <div class="achievements-section">
+        <h3>🏅 巡禮勳章</h3>
+        <div class="badges-grid" id="badges-container"></div>
+      </div>
+
+      <div class="history-list-section">
+        <h3>🚉 已造訪車站紀錄</h3>
+        <ul id="history-list" class="history-list"></ul>
+      </div>
+
       <div class="panel-footer">
         <button id="btn-reset" class="btn-danger">🔄 重置造訪紀錄（重新環島）</button>
       </div>

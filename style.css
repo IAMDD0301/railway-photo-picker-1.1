@@ -29,7 +29,7 @@ body {
   max-width: 600px;
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 16px;
 }
 
 .main-header {
@@ -47,21 +47,26 @@ body {
 .badge { background: var(--accent-color); color: white; font-size: 0.6rem; padding: 2px 6px; border-radius: 4px; }
 
 .stats-bar {
-  font-size: 0.85rem;
   display: flex;
   flex-direction: column;
   align-items: flex-end;
-  gap: 4px;
+  gap: 6px;
 }
 
+.header-controls { display: flex; gap: 6px; }
+.stat-items-group { font-size: 0.8rem; color: #4B5563; display: flex; gap: 10px; }
+
 .btn-icon {
-  background: none;
+  background: #F3F4F6;
   border: 1px solid #D1D5DB;
-  padding: 4px 8px;
+  padding: 4px 10px;
   border-radius: 8px;
   cursor: pointer;
   font-size: 0.8rem;
+  transition: all 0.2s ease;
 }
+
+.btn-icon:hover { background: #E5E7EB; }
 
 .drawing-stage {
   display: flex;
@@ -74,18 +79,18 @@ body {
 /* 篩選器樣式 */
 .filter-bar {
   background: white;
-  padding: 12px 18px;
+  padding: 10px 16px;
   border-radius: 12px;
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  font-size: 0.9rem;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+  font-size: 0.85rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
 }
 
 .filter-bar select {
-  padding: 6px 12px;
+  padding: 6px 10px;
   border-radius: 8px;
   border: 1px solid #D1D5DB;
   background: #F9FAFB;
@@ -155,7 +160,6 @@ body {
   flex-direction: column;
   align-items: center;
   gap: 6px;
-  margin-top: 4px;
 }
 
 .btn-go-official {
@@ -173,22 +177,31 @@ body {
 .btn-go-official:hover { background: #0369A1; transform: translateY(-2px); }
 .sub-note { font-size: 0.8rem; color: #64748B; }
 
-/* Modal 彈窗 */
+/* Modal 與卡片樣式 */
 .modal-overlay {
   position: fixed;
   top: 0; left: 0; right: 0; bottom: 0;
-  background: rgba(0, 0, 0, 0.6);
+  background: rgba(0, 0, 0, 0.65);
   display: flex; justify-content: center; align-items: center;
   padding: 20px; z-index: 100; cursor: pointer;
 }
 
 .hidden { display: none; }
 
+.polaroid-card-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  width: 100%; max-width: 420px;
+  cursor: default;
+}
+
 .polaroid-card {
   background: var(--card-bg);
-  padding: 20px 24px 28px 24px;
+  padding: 22px 24px 20px 24px;
   border-radius: 16px;
-  width: 100%; max-width: 420px;
+  width: 100%;
   box-shadow: 0 20px 30px rgba(0,0,0,0.3);
   animation: popUp 0.35s ease-out;
 }
@@ -200,16 +213,107 @@ body {
 .tap-hint { font-size: 0.75rem; color: #9CA3AF; }
 
 .polaroid-caption h2 { font-size: 1.6rem; color: var(--text-primary); }
-.location-text { font-size: 0.9rem; color: #6B7280; margin-bottom: 16px; }
+.location-text { font-size: 0.85rem; color: #6B7280; margin-bottom: 12px; }
 
-.info-section { margin-top: 14px; }
-.info-section h3 { font-size: 0.95rem; color: var(--accent-color); margin-bottom: 6px; }
+.info-section { margin-top: 12px; }
+.info-section h3 { font-size: 0.9rem; color: var(--accent-color); margin-bottom: 6px; }
 .info-section ul { list-style: none; }
-.info-section li { margin-bottom: 8px; color: #374151; background: #F3F4F6; padding: 8px 12px; border-radius: 8px; font-size: 0.9rem; }
 
-.history-panel { background: white; width: 100%; max-width: 450px; max-height: 80vh; border-radius: 16px; padding: 20px; display: flex; flex-direction: column; gap: 12px; cursor: default; }
+.item-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+  background: #F3F4F6;
+  padding: 8px 12px;
+  border-radius: 8px;
+}
+
+.item-info { font-size: 0.85rem; color: #374151; }
+.item-info small { color: #6B7280; display: block; margin-top: 2px; }
+
+.btn-map-link {
+  background: #2563EB;
+  color: white;
+  text-decoration: none;
+  font-size: 0.75rem;
+  padding: 4px 8px;
+  border-radius: 6px;
+  white-space: nowrap;
+  margin-left: 8px;
+}
+
+.btn-map-link:hover { background: #1D4ED8; }
+
+.card-footer-watermark {
+  margin-top: 14px;
+  text-align: right;
+  font-size: 0.7rem;
+  color: #D1D5DB;
+  letter-spacing: 1px;
+}
+
+.btn-save-image {
+  background: #10B981;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 25px;
+  font-size: 0.9rem;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+}
+
+.btn-save-image:hover { background: #059669; }
+
+/* 歷史紀錄與勳章面板 */
+.history-panel {
+  background: white;
+  width: 100%; max-width: 450px;
+  max-height: 85vh;
+  border-radius: 16px; padding: 20px;
+  display: flex; flex-direction: column; gap: 14px;
+  cursor: default;
+  overflow-y: auto;
+}
+
 .panel-header { display: flex; justify-content: space-between; align-items: center; }
 .btn-close { background: none; border: none; font-size: 1.5rem; cursor: pointer; color: #9CA3AF; }
-.history-list { overflow-y: auto; list-style: none; display: flex; flex-direction: column; gap: 8px; }
-.history-list li { padding: 8px 12px; background: #F3F4F6; border-radius: 8px; font-size: 0.9rem; }
+
+.achievements-section h3, .history-list-section h3 {
+  font-size: 0.9rem;
+  color: #4B5563;
+  margin-bottom: 8px;
+}
+
+.badges-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+}
+
+.badge-card {
+  background: #F3F4F6;
+  border-radius: 10px;
+  padding: 10px 6px;
+  text-align: center;
+  opacity: 0.4;
+  filter: grayscale(100%);
+  transition: all 0.3s ease;
+}
+
+.badge-card.unlocked {
+  opacity: 1;
+  filter: grayscale(0%);
+  background: #FEF3C7;
+  border: 1px solid #F59E0B;
+}
+
+.badge-icon { font-size: 1.4rem; display: block; margin-bottom: 2px; }
+.badge-title { font-size: 0.75rem; font-weight: bold; color: #1F2937; display: block; }
+.badge-desc { font-size: 0.65rem; color: #6B7280; display: block; margin-top: 2px; }
+
+.history-list { list-style: none; display: flex; flex-direction: column; gap: 8px; max-height: 200px; overflow-y: auto; }
+.history-list li { padding: 8px 12px; background: #F3F4F6; border-radius: 8px; font-size: 0.85rem; }
 .btn-danger { background: #EF4444; color: white; border: none; padding: 10px; border-radius: 8px; cursor: pointer; width: 100%; }
