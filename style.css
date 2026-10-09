@@ -67,7 +67,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 30px;
+  gap: 24px;
   width: 100%;
 }
 
@@ -102,6 +102,15 @@ body {
 .flipping { animation: flip 0.15s ease-in-out infinite alternate; }
 @keyframes flip { 0% { transform: rotateX(0deg); } 100% { transform: rotateX(90deg); opacity: 0.5; } }
 
+.action-area {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  width: 100%;
+}
+
+/* 快門按鈕 */
 .shutter-button {
   background: var(--accent-color);
   color: white;
@@ -116,8 +125,44 @@ body {
   display: flex; align-items: center; gap: 8px;
 }
 
-.shutter-button:hover { transform: translateY(-2px); }
+.shutter-button:hover { transform: translateY(-2px); box-shadow: 0 12px 24px rgba(245, 158, 11, 0.5); }
 .shutter-button:active { transform: translateY(2px); }
+
+/* 準備出發! 按鈕與文字 */
+.go-official-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  margin-top: 8px;
+}
+
+.btn-go-official {
+  background: #0284C7;
+  color: white;
+  text-decoration: none;
+  padding: 12px 28px;
+  border-radius: 30px;
+  font-size: 0.95rem;
+  font-weight: bold;
+  box-shadow: 0 4px 12px rgba(2, 132, 199, 0.3);
+  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-go-official:hover {
+  background: #0369A1;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(2, 132, 199, 0.4);
+}
+
+.sub-note {
+  font-size: 0.8rem;
+  color: #64748B;
+  letter-spacing: 0.5px;
+}
 
 /* Modal 彈窗 */
 .modal-overlay {
