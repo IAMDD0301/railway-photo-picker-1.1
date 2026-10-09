@@ -1,53 +1,21 @@
 [
-  {
-    "station_code": "2160",
-    "station_id": "ST_043",
-    "station_name": "新埔",
-    "line_name": "海岸線",
-    "city": "苗栗縣",
-    "district": "通霄鎮",
-    "station_grade": "乙簡站",
-    "photo_spots": [
-      {
-        "name": "新埔百年木造車站站體",
-        "distance_text": "站內即可拍攝",
-        "description": "日治時期留存至今之黑瓦木造車站，極具懷舊古韻。"
-      },
-      {
-        "name": "新埔海堤 (離海最近海堤)",
-        "distance_text": "步行約 3 分鐘 (約 250 公尺)",
-        "description": "出站直走即可到達海堤，可拍攝風車與海浪美景。"
-      }
-    ],
-    "food_recommendations": [
-      {
-        "name": "站前海堤景觀咖啡/在地古早味小吃",
-        "distance_text": "步行約 3 分鐘",
-        "description": "簡易海邊小店，適合抽中後稍作休息並品嚐古早味點心。"
-      }
-    ]
-  },
-  {
-    "station_code": "1090",
-    "station_id": "ST_021",
-    "station_name": "內壢",
-    "line_name": "縱貫線北段",
-    "city": "桃園市",
-    "district": "中壢區",
-    "station_grade": "二等站",
-    "photo_spots": [
-      {
-        "name": "元智大學綠色隧道 / 內壢公園",
-        "distance_text": "步行約 10 分鐘",
-        "description": "綠意盎然的校園步道與公園景緻。"
-      }
-    ],
-    "food_recommendations": [
-      {
-        "name": "內壢手工粉圓 / 忠孝路美食商圈",
-        "distance_text": "步行約 5~7 分鐘",
-        "description": "在地熱門古早味Q彈手工粉圓與忠孝路傳統美食。"
-      }
-    ]
-  }
+  {"station_code":"0900","station_id":"ST_001","station_name":"基隆","line_name":"縱貫線北段","city":"基隆市","district":"中山區","station_grade":"一等站","photo_spots":[{"name":"基隆港海濱廣場","distance_text":"步行約 2 分鐘","description":"拍攝國門廣場與郵港海景。"}],"food_recommendations":[{"name":"仁愛市場美食 / 廟口夜市","distance_text":"步行約 8 分鐘","description":"在地傳統特色小吃美食。"}]},
+  {"station_code":"0910","station_id":"ST_002","station_name":"三坑","line_name":"縱貫線北段","city":"基隆市","district":"仁愛區","station_grade":"簡易站","photo_spots":[{"name":"龍安街鐵道彎道","distance_text":"步行約 2 分鐘","description":"鐵道巷弄攝影點。"}],"food_recommendations":[{"name":"三坑高架橋下傳統小吃","distance_text":"步行約 3 分鐘","description":"在地古早味乾麵與黑白切。"}]},
+  {"station_code":"0920","station_id":"ST_003","station_name":"八堵","line_name":"縱貫線北段","city":"基隆市","district":"暖暖區","station_grade":"二等站","photo_spots":[{"name":"暖江橋壺穴地貌","distance_text":"步行約 10 分鐘","description":"基隆河壺穴自然地貌。"}],"food_recommendations":[{"name":"八堵車站前傳統麵攤","distance_text":"步行約 1 分鐘","description":"懷舊早午餐傳統麵小吃。"}]},
+  {"station_code":"0930","station_id":"ST_004","station_name":"七堵","line_name":"縱貫線北段","city":"基隆市","district":"七堵區","station_grade":"一等站","photo_spots":[{"name":"七堵鐵道紀念公園","distance_text":"步行約 5 分鐘","description":"百年木造舊車站建築。"}],"food_recommendations":[{"name":"七堵家傳營養三明治 / 咖哩麵","distance_text":"步行約 6 分鐘","description":"在地排隊人氣名店。"}]},
+  {"station_code":"1000","station_id":"ST_011","station_name":"台北","line_name":"縱貫線北段","city":"台北市","district":"中正區","station_grade":"特等站","photo_spots":[{"name":"北門 (承恩門) / 鐵道部園區","distance_text":"步行約 8 分鐘","description":"清代古蹟門樓與日治鐵道文創區。"}],"food_recommendations":[{"name":"華陰街商圈在地小吃","distance_text":"步行約 5 分鐘","description":"後火車站傳統鵝肉與古早味麵點。"}]},
+  {"station_code":"1080","station_id":"ST_020","station_name":"桃園","line_name":"縱貫線北段","city":"桃園市","district":"桃園區","station_grade":"一等站","photo_spots":[{"name":"桃園景福宮 / 桃園神社","distance_text":"步行約 10~12 分鐘","description":"歷史廟宇與日式神社園區。"}],"food_recommendations":[{"name":"桃園大廟後傳統小吃","distance_text":"步行約 8 分鐘","description":"鴨肉榮與大廟後古早味麵攤。"}]},
+  {"station_code":"1090","station_id":"ST_021","station_name":"內壢","line_name":"縱貫線北段","city":"桃園市","district":"中壢區","station_grade":"二等站","photo_spots":[{"name":"元智大學綠色隧道 / 內壢公園","distance_text":"步行約 10 分鐘","description":"綠意盎然的校園步道與公園景緻。"}],"food_recommendations":[{"name":"內壢手工粉圓 / 忠孝路美食商圈","distance_text":"步行約 5~7 分鐘","description":"在地熱門古早味Q彈手工粉圓。"}]},
+  {"station_code":"1100","station_id":"ST_022","station_name":"中壢","line_name":"縱貫線北段","city":"桃園市","district":"中壢區","station_grade":"一等站","photo_spots":[{"name":"中平路商圈徒步區","distance_text":"步行約 2 分鐘","description":"熱鬧的站前徒步街與歷史故事館。"}],"food_recommendations":[{"name":"中壢新珍香花生糖 / 傳統牛肉麵","distance_text":"步行約 5 分鐘","description":"老牌百年花生糖與川味牛肉麵。"}]},
+  {"station_code":"2110","station_id":"ST_038","station_name":"談文","line_name":"海岸線","city":"苗栗縣","district":"造橋鄉","station_grade":"招呼站","photo_spots":[{"name":"談文百年木造車站","distance_text":"站內即可拍攝","description":"海線五寶之一木造建築。"}],"food_recommendations":[{"name":"站前心適園簡餐","distance_text":"步行約 3 分鐘","description":"傳統小巧餐飲。"}]},
+  {"station_code":"2160","station_id":"ST_043","station_name":"新埔","line_name":"海岸線","city":"苗栗縣","district":"通霄鎮","station_grade":"乙簡站","photo_spots":[{"name":"新埔百年木造車站 / 海堤","distance_text":"步行約 3 分鐘","description":"離海最近的木造海邊車站。"}],"food_recommendations":[{"name":"站前海堤景觀咖啡","distance_text":"步行約 3 分鐘","description":"海邊小店點心與咖啡。"}]},
+  {"station_code":"3160","station_id":"ST_039","station_name":"苗栗","line_name":"台中線 (山線)","city":"苗栗縣","district":"苗栗市","station_grade":"一等站","photo_spots":[{"name":"苗栗鐵道文物展示館","distance_text":"步行約 3 分鐘","description":"展示豐富的古董蒸氣火車頭。"}],"food_recommendations":[{"name":"苗栗站前客家麵館 / 水晶餃","distance_text":"步行約 5 分鐘","description":"在地道地客家古早味水晶餃。"}]},
+  {"station_code":"3300","station_id":"ST_050","station_name":"台中","line_name":"台中線 (山線)","city":"台中市","district":"中區","station_grade":"特等站","photo_spots":[{"name":"台中舊火車站 (古蹟站體) / 帝國糖廠","distance_text":"步行約 3~8 分鐘","description":"國定古蹟國立日式舊站與糖廠水岸。"}],"food_recommendations":[{"name":"宮原眼科 / 第二市場傳統美食","distance_text":"步行約 5~12 分鐘","description":"熱門冰品與古早味肉丸肉包。"}]},
+  {"station_code":"3360","station_id":"ST_054","station_name":"彰化","line_name":"縱貫線南段","city":"彰化縣","district":"彰化市","station_grade":"一等站","photo_spots":[{"name":"彰化扇形車庫 / 戶羽機關車園區","distance_text":"步行約 10 分鐘","description":"亞洲唯二蒸汽火車活化扇形車庫。"}],"food_recommendations":[{"name":"阿璋肉圓 / 彰化控肉飯","distance_text":"步行約 8 分鐘","description":"著名彰化小吃與傳統木瓜牛奶。"}]},
+  {"station_code":"4080","station_id":"ST_080","station_name":"嘉義","line_name":"縱貫線南段","city":"嘉義市","district":"西區","station_grade":"一等站","photo_spots":[{"name":"阿里山森林鐵路車庫園區 / 檜意森活村","distance_text":"步行約 12 分鐘","description":"阿里山林業鐵路起點與日式木造聚落。"}],"food_recommendations":[{"name":"嘉義火雞肉飯 / 文化路夜市","distance_text":"步行約 8~10 分鐘","description":"正宗在地火雞肉飯。"}]},
+  {"station_code":"4220","station_id":"ST_100","station_name":"台南","line_name":"縱貫線南段","city":"台南市","district":"東區","station_grade":"一等站","photo_spots":[{"name":"台南舊站體古蹟 / 國立成功大學綠湖","distance_text":"步行約 2 分鐘","description":"歷史文藝氛圍古蹟與美麗校園。"}],"food_recommendations":[{"name":"牛肉湯 / 蝦仁飯 / 葡吉麵包","distance_text":"步行約 8 分鐘","description":"台南傳統經典牛肉湯美食。"}]},
+  {"station_code":"4400","station_id":"ST_120","station_name":"高雄","line_name":"縱貫線南段","city":"高雄市","district":"三民區","station_grade":"特等站","photo_spots":[{"name":"高雄帝冠式舊火車站願景館","distance_text":"站旁步行 1 分鐘","description":"移動保存復刻歷史帝冠式建築。"}],"food_recommendations":[{"name":"吉林夜市 / 三鳳中街傳統小吃","distance_text":"步行約 10 分鐘","description":"在地熱門傳統夜市美食。"}]},
+  {"station_code":"6000","station_id":"ST_150","station_name":"台東","line_name":"南迴線","city":"台東縣","district":"台東市","station_grade":"一等站","photo_spots":[{"name":"台東車站原民藝術廣場 / 卑南遺址公園","distance_text":"步行約 10 分鐘","description":"東台灣門戶與原住民文化特色公園。"}],"food_recommendations":[{"name":"台東卑南豬血湯 / 卑南包子","distance_text":"車程約 5 分鐘","description":"台東知名排隊美食。"}]},
+  {"station_code":"7000","station_id":"ST_180","station_name":"花蓮","line_name":"北迴線","city":"花蓮縣","district":"花蓮市","station_grade":"特等站","photo_spots":[{"name":"花蓮鐵道文化園區","distance_text":"公車/車程約 8 分鐘","description":"舊花東線鐵道文化木造園區。"}],"food_recommendations":[{"name":"公正包子 / 炸蛋蔥油餅","distance_text":"公車/車程約 8 分鐘","description":"花蓮熱門傳統小吃。"}]},
+  {"station_code":"7190","station_id":"ST_210","station_name":"宜蘭","line_name":"宜蘭線","city":"宜蘭縣","district":"宜蘭市","station_grade":"一等站","photo_spots":[{"name":"幾米主題廣場 / 丟丟噹森林","distance_text":"出站步行 1 分鐘","description":"全台最夢幻幾米繪本主題車站園區。"}],"food_recommendations":[{"name":"宜蘭蒜味肉羹 / 北門綠豆沙大王","distance_text":"步行約 10 分鐘","description":"宜蘭傳統排隊老店美食。"}]}
 ]

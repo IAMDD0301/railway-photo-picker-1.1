@@ -4,7 +4,6 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>旅拍駅 — 全台鐵路車站隨機旅拍系統</title>
-  <!-- Google 圓體備用字型 -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@400;700&display=swap" rel="stylesheet">
@@ -13,7 +12,7 @@
 <body>
 
   <div class="app-container">
-    <!-- 日系 Header 區 -->
+    <!-- Header 區 -->
     <header class="main-header">
       <div class="brand">
         <span class="badge">TRAIL & SHOT</span>
@@ -26,7 +25,7 @@
       </div>
     </header>
 
-    <!-- 核心翻轉式時刻表看板 (Flip Board) -->
+    <!-- 核心時刻表看板 -->
     <main class="drawing-stage">
       <div class="flip-board-container">
         <div class="board-header">
@@ -35,54 +34,59 @@
         </div>
         
         <div class="flip-board">
-          <!-- 路線欄位 -->
           <div class="flip-column">
             <span class="column-label">LINE 路線</span>
-            <div class="flip-card" id="flip-line">
-              <div class="flip-inner">——</div>
-            </div>
+            <div class="flip-card" id="flip-line"><div class="flip-inner">——</div></div>
           </div>
-
-          <!-- 代碼欄位 -->
           <div class="flip-column">
             <span class="column-label">CODE 代碼</span>
-            <div class="flip-card" id="flip-code">
-              <div class="flip-inner">0000</div>
-            </div>
+            <div class="flip-card" id="flip-code"><div class="flip-inner">0000</div></div>
           </div>
-
-          <!-- 車站名稱欄位 -->
           <div class="flip-column main-station">
             <span class="column-label">STATION 車站</span>
-            <div class="flip-card" id="flip-name">
-              <div class="flip-inner">ready</div>
-            </div>
+            <div class="flip-card" id="flip-name"><div class="flip-inner">ready</div></div>
           </div>
         </div>
       </div>
 
-      <!-- 核心快門抽選按鈕 -->
+      <!-- 快門抽選按鈕 -->
       <div class="action-area">
         <button id="btn-draw" class="shutter-button">
           <span class="camera-icon">📸</span>
           <span class="btn-text">按下快門抽選</span>
         </button>
       </div>
+
+      <!-- 下方區塊：起始站選擇與路線預估資訊區 -->
+      <section class="route-planner-card">
+        <div class="planner-header">
+          <h3>🚉 出發行程規劃</h3>
+          <div class="start-station-select">
+            <label for="select-start-station">設定你的起始站：</label>
+            <select id="select-start-station">
+              <!-- JS 動態渲染 241 站 -->
+            </select>
+          </div>
+        </div>
+
+        <div class="route-estimates-container" id="route-estimates">
+          <p class="placeholder-text">按下快門抽選後，此處將自動算得出發規劃與停靠站數！</p>
+        </div>
+      </section>
     </main>
   </div>
 
-  <!-- 彈出式車站資訊卡片 (無圖片版) -->
+  <!-- 彈出式車站資訊卡片 (無圖片，點擊任意處關閉) -->
   <div id="result-modal" class="modal-overlay hidden">
     <div class="polaroid-card">
       <div class="station-header-bar">
-        <span class="photo-tag" id="modal-tag">宜蘭線 | 招呼站</span>
+        <span class="photo-tag" id="modal-tag">路線 | 等級</span>
         <span class="tap-hint">💡 點擊任意處返回主畫面</span>
       </div>
 
-      <!-- 文字與推薦區 -->
       <div class="polaroid-caption">
-        <h2 id="modal-station-title">石城火車站</h2>
-        <p class="location-text" id="modal-location">📍 宜蘭縣頭城鎮</p>
+        <h2 id="modal-station-title">車站名稱</h2>
+        <p class="location-text" id="modal-location">📍 所在縣市</p>
         
         <div class="info-section">
           <h3>📷 周邊拍攝地點</h3>
@@ -97,7 +101,7 @@
     </div>
   </div>
 
-  <!-- 歷史紀錄側邊欄 (History Modal) -->
+  <!-- 歷史紀錄側邊欄 -->
   <div id="history-modal" class="modal-overlay hidden">
     <div class="history-panel" onclick="event.stopPropagation()">
       <div class="panel-header">
