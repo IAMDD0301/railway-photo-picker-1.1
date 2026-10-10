@@ -1,6 +1,7 @@
 let allStations = [];
+let allTrivia = [];
 let visitedCodes = JSON.parse(localStorage.getItem('railway_visited')) || [];
-let currentStation = null; // 紀錄目前顯示的車站
+let currentStation = null;
 
 const elLine = document.getElementById('flip-line');
 const elCode = document.getElementById('flip-code');
@@ -12,21 +13,22 @@ const boardContainer = document.getElementById('board-container');
 const modalResult = document.getElementById('result-modal');
 const modalHistory = document.getElementById('history-modal');
 
-// 您指定的 30 個主要大站清單
+// 指定的 30 個主要大站清單
 const majorStationList = [
   "臺北", "桃園", "臺南", "板橋", "臺中", "中壢", "新竹", "松山", "南港", "高雄",
   "樹林", "彰化", "新左營", "汐止", "屏東", "嘉義", "汐科", "內壢", "花蓮", "鶯歌",
   "基隆", "萬華", "羅東", "員林", "斗六", "竹北", "瑞芳", "豐原", "苗栗", "大甲"
 ];
 
-// 載入 stations.json
-fetch('./stations.json')
-  .then(res => res.json())
-  .then(data => {
-    allStations = data;
-    updateStats();
-  })
-  .catch(err => console.error("車站載入錯誤:", err));
+// 載入 stations.json 與 trivia.json
+Promise.all([
+  fetch('./stations.json').then(res => res.json()),
+  fetch('./trivia.json').then(res => res.json())
+]).then(([stationsData, triviaData]) => {
+  allStations = stationsData;
+  allTrivia = triviaData;
+  updateStats();
+}).catch(err => console.error("資料載入錯誤:", err));
 
 function updateStats() {
   const total = allStations.length;
@@ -100,7 +102,7 @@ elBtnDraw.addEventListener('click', () => {
   }, 1500);
 });
 
-// 點擊「▲ 下一站目的地 ▲」看板重新打開詳細資訊
+// 點擊看板重新打開詳細資訊
 boardContainer.addEventListener('click', () => {
   if (currentStation) {
     showResultModal(currentStation);
@@ -112,7 +114,6 @@ function showResultModal(station) {
   document.getElementById('modal-location').textContent = `📍 路線：${station.line_name} (代碼: ${station.station_code})`;
   document.getElementById('modal-tag').textContent = `${station.line_name}`;
 
-  // 起點：該火車站；終點：景點或美食名稱
   const renderItemsWithNav = (items) => items.map(spot => {
     const origin = encodeURIComponent(`${station.station_name}火車站`);
     const destination = encodeURIComponent(spot.name);
@@ -132,13 +133,17 @@ function showResultModal(station) {
   document.getElementById('modal-photo-spots').innerHTML = renderItemsWithNav(station.photo_spots);
   document.getElementById('modal-food-spots').innerHTML = renderItemsWithNav(station.food_recommendations);
 
+  // 隨機抽選一則冷知識
+  if (allTrivia.length > 0) {
+    const randomTrivia = allTrivia[Math.floor(Math.random() * allTrivia.length)];
+    document.getElementById('trivia-title').textContent = randomTrivia.title;
+    document.getElementById('trivia-content').textContent = randomTrivia.content;
+  }
+
   modalResult.classList.remove('hidden');
 }
 
-// 點擊任意處關閉結果 Modal
 modalResult.onclick = () => modalResult.classList.add('hidden');
-
-// 歷史紀錄
 modalHistory.onclick = () => modalHistory.classList.add('hidden');
 document.getElementById('btn-close-history').onclick = () => modalHistory.classList.add('hidden');
 
@@ -156,7 +161,6 @@ document.getElementById('btn-history').onclick = () => {
   modalHistory.classList.remove('hidden');
 };
 
-// 重置紀錄
 document.getElementById('btn-reset').onclick = () => {
   if (confirm("確定要重置所有造訪紀錄，重新開始全台巡禮嗎？")) {
     visitedCodes = [];

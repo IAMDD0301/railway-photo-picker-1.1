@@ -93,7 +93,6 @@ body {
   cursor: pointer;
 }
 
-/* 可點擊開啟詳情的看板 */
 .flip-board-container {
   background: var(--board-bg);
   width: 100%;
@@ -111,11 +110,7 @@ body {
 }
 
 .board-header { display: flex; justify-content: space-between; color: #9CA3AF; font-size: 0.75rem; margin-bottom: 12px; }
-
-.clickable-title {
-  color: #F3F4F6;
-  font-weight: bold;
-}
+.clickable-title { color: #F3F4F6; font-weight: bold; }
 
 .flip-board { display: flex; gap: 10px; justify-content: space-around; }
 .flip-column { display: flex; flex-direction: column; align-items: center; gap: 6px; }
@@ -186,7 +181,7 @@ body {
 .btn-go-official:hover { background: #0369A1; transform: translateY(-2px); }
 .sub-note { font-size: 0.8rem; color: #64748B; }
 
-/* Modal 彈窗樣式與導航連結 */
+/* Modal 彈窗樣式 */
 .modal-overlay {
   position: fixed;
   top: 0; left: 0; right: 0; bottom: 0;
@@ -199,11 +194,13 @@ body {
 
 .polaroid-card {
   background: var(--card-bg);
-  padding: 20px 24px 28px 24px;
+  padding: 20px 24px 24px 24px;
   border-radius: 16px;
   width: 100%; max-width: 420px;
   box-shadow: 0 20px 30px rgba(0,0,0,0.3);
   animation: popUp 0.35s ease-out;
+  max-height: 90vh;
+  overflow-y: auto;
 }
 
 @keyframes popUp { 0% { transform: scale(0.85); opacity: 0; } 100% { transform: scale(1); opacity: 1; } }
@@ -213,9 +210,9 @@ body {
 .tap-hint { font-size: 0.75rem; color: #9CA3AF; }
 
 .polaroid-caption h2 { font-size: 1.6rem; color: var(--text-primary); }
-.location-text { font-size: 0.9rem; color: #6B7280; margin-bottom: 16px; }
+.location-text { font-size: 0.9rem; color: #6B7280; margin-bottom: 12px; }
 
-.info-section { margin-top: 14px; }
+.info-section { margin-top: 12px; }
 .info-section h3 { font-size: 0.95rem; color: var(--accent-color); margin-bottom: 6px; }
 .info-section ul { list-style: none; }
 
@@ -229,7 +226,7 @@ body {
   border-radius: 8px;
 }
 
-.item-info { font-size: 0.9rem; color: #374151; }
+.item-info { font-size: 0.85rem; color: #374151; }
 .item-info small { color: #6B7280; display: block; margin-top: 2px; }
 
 .btn-nav-link {
@@ -242,11 +239,29 @@ body {
   white-space: nowrap;
   margin-left: 10px;
   font-weight: bold;
-  transition: background 0.2s;
 }
 
-.btn-nav-link:hover {
-  background: #0369A1;
+.btn-nav-link:hover { background: #0369A1; }
+
+/* 冷知識樣式 */
+.trivia-section {
+  margin-top: 14px;
+  background: #FEF3C7;
+  border: 1px solid #F59E0B;
+  padding: 10px 12px;
+  border-radius: 10px;
+}
+
+.trivia-section h3 {
+  font-size: 0.85rem;
+  color: #B45309;
+  margin-bottom: 4px;
+}
+
+.trivia-section p {
+  font-size: 0.8rem;
+  color: #78350F;
+  line-height: 1.4;
 }
 
 .history-panel { background: white; width: 100%; max-width: 450px; max-height: 80vh; border-radius: 16px; padding: 20px; display: flex; flex-direction: column; gap: 12px; cursor: default; }
