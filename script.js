@@ -114,6 +114,7 @@ function showResultModal(station) {
   document.getElementById('modal-location').textContent = `📍 路線：${station.line_name} (代碼: ${station.station_code})`;
   document.getElementById('modal-tag').textContent = `${station.line_name}`;
 
+  // 渲染項目（不顯示任何步行/車程預估時間）
   const renderItemsWithNav = (items) => items.map(spot => {
     const origin = encodeURIComponent(`${station.station_name}火車站`);
     const destination = encodeURIComponent(spot.name);
@@ -122,7 +123,7 @@ function showResultModal(station) {
     return `
       <li class="item-row">
         <div class="item-info">
-          <strong>${spot.name}</strong> (${spot.distance_text})<br>
+          <strong>${spot.name}</strong><br>
           <small>${spot.description}</small>
         </div>
         <a href="${googleNavUrl}" target="_blank" rel="noopener noreferrer" class="btn-nav-link" onclick="event.stopPropagation()">📍 路線導航</a>
@@ -133,7 +134,7 @@ function showResultModal(station) {
   document.getElementById('modal-photo-spots').innerHTML = renderItemsWithNav(station.photo_spots);
   document.getElementById('modal-food-spots').innerHTML = renderItemsWithNav(station.food_recommendations);
 
-  // 隨機抽選一則冷知識
+  // 隨機抽選一則台鐵冷知識
   if (allTrivia.length > 0) {
     const randomTrivia = allTrivia[Math.floor(Math.random() * allTrivia.length)];
     document.getElementById('trivia-title').textContent = randomTrivia.title;
